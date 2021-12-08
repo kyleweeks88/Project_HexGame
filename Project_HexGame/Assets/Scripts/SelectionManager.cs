@@ -31,7 +31,15 @@ public class SelectionManager : MonoBehaviour
                 hexGrid.GetTileAt(neighbor).DisableHighlight();
             }
 
-            neighbors = hexGrid.GetNeighborsFor(selectedHexTile.HexCoords);
+            // Create a new struct (which exists inside the GraphSearch class) and -
+            // populate it by calling the function BFSGetRange inside GraphSearch -
+            // passing in the active hexGrid, the hextile we've selected by mouse -
+            // and a hard-coded movement value of 20 points.
+            BFSResult bfsResult = GraphSearch.BFSGetRange(hexGrid, selectedHexTile.HexCoords, 20);
+
+            // This List<Vector3Int> neighbors will be populated by our bfsResult.
+            // I DONT UNDERSTAND HOW THE COROUTINE 'GetRangePositions' WORKS RIGHT NOW!
+            neighbors = new List<Vector3Int>(bfsResult.GetRangePositions());
 
             foreach (Vector3Int neighbor in neighbors)
             {
