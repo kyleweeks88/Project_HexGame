@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: 9409f70bb12e67d4d8c71644b4b20afb
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -5065895324553700164
+    second: Armature|_Tpose
+  - first:
+      74: -5332072593783397479
+    second: Armature|Pose1
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths:
+    - Armature
+    - Armature/CTRL_Master
+    - Armature/CTRL_Master/TGT_Root
+    - Armature/CTRL_Master/TGT_Root/TGT_Spine_01
+    - Armature/CTRL_Master/TGT_Root/TGT_Spine_01/TGT_Spine_03
+    - Armature/CTRL_Master/TGT_Root/TGT_Spine_01/TGT_Spine_03/TGT_Neck_01
+    - Armature/CTRL_Master/TGT_Root/TGT_Spine_01/TGT_Spine_03/TGT_Neck_01/TGT_Head
+    - Armature/CTRL_Master/TGT_Root/TGT_Spine_01/TGT_Spine_03/TGT_Neck_01/TGT_Head/DEF_Cheeks_L
+    - Armature/CTRL_Master/TGT_Root/TGT_Spine_01/TGT_Spine_03/TGT_Neck_01/TGT_Head/DEF_Cheeks_R
+    - Armature/DEF_Hips
+    - Armature/DEF_Hips/DEF_Root
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_L/DEF_ButtCheek_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_L/DEF_Thigh_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_L/DEF_Thigh_L/DEF_Shin_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_L/DEF_Thigh_L/DEF_Shin_L/DEF_Foot_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_L/DEF_Thigh_L/DEF_Shin_L/DEF_Foot_L/DEF_Toe_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_R/DEF_ButtCheek_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_R/DEF_Thigh_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_R/DEF_Thigh_R/DEF_Shin_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_R/DEF_Thigh_R/DEF_Shin_R/DEF_Foot_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Pelvis_R/DEF_Thigh_R/DEF_Shin_R/DEF_Foot_R/DEF_Toe_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_index.01.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_index.01.L/DEF_f_index.02.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_index.01.L/DEF_f_index.02.L/DEF_f_index.03.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_middle.01.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_middle.01.L/DEF_f_middle.02.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_middle.01.L/DEF_f_middle.02.L/DEF_f_middle.03.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_pinky.01.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_pinky.01.L/DEF_f_pinky.02.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_pinky.01.L/DEF_f_pinky.02.L/DEF_f_pinky.03.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_ring.01.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_ring.01.L/DEF_f_ring.02.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_f_ring.01.L/DEF_f_ring.02.L/DEF_f_ring.03.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_Palm_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_thumb.01.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_thumb.01.L/DEF_thumb.02.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_L/DEF_Bicep_L/DEF_Forearm_L/DEF_Hand_L/DEF_thumb.01.L/DEF_thumb.02.L/DEF_thumb.03.L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_index.01.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_index.01.R/DEF_f_index.02.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_index.01.R/DEF_f_index.02.R/DEF_f_index.03.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_middle.01.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_middle.01.R/DEF_f_middle.02.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_middle.01.R/DEF_f_middle.02.R/DEF_f_middle.03.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_pinky.01.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_pinky.01.R/DEF_f_pinky.02.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_pinky.01.R/DEF_f_pinky.02.R/DEF_f_pinky.03.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_ring.01.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_ring.01.R/DEF_f_ring.02.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_f_ring.01.R/DEF_f_ring.02.R/DEF_f_ring.03.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_Palm_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_thumb.01.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_thumb.01.R/DEF_thumb.02.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_CollarBone_R/DEF_Bicep_R/DEF_Forearm_R/DEF_Hand_R/DEF_thumb.01.R/DEF_thumb.02.R/DEF_thumb.03.R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Brow_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Brow_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Eye_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Eye_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Eyelid_Bot_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Eyelid_Bot_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Eyelid_Top_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Eyelid_Top_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Jaw
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_Corner_Bot_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_Corner_Bot_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_Corner_Top_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_Corner_Top_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_End_L
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_End_R
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_Mid_Bot
+    - Armature/DEF_Hips/DEF_Root/DEF_Spine_01/DEF_Spine_03/DEF_Neck_01/DEF_Head/DEF_Mouth_Mid_Top
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

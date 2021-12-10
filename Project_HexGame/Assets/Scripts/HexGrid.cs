@@ -11,7 +11,7 @@ public class HexGrid : MonoBehaviour
     {
         foreach (HexTile hex in FindObjectsOfType<HexTile>())
         {
-            hexTileDict[hex.HexCoord] = hex;
+            hexTileDict[hex.HexCoords] = hex;
         }
     }
 
@@ -30,21 +30,40 @@ public class HexGrid : MonoBehaviour
     /// <returns></returns>
     public List<Vector3Int> GetNeighborsFor(Vector3Int _hexCoordinates)
     {
+        // Check if the _hexCoordinates exist in the dictionary which
+        // contains all of the hextiles in the scene.
         if (hexTileDict.ContainsKey(_hexCoordinates) == false)
+            // If the _hexCoordinates don't exist, return a new empty list.
             return new List<Vector3Int>();
 
+        // Check if the _hexCoordinates exist in this neighbors dictionary
+        // then returned the cached value.
         if (hexTileNeighborDict.ContainsKey(_hexCoordinates))
             return hexTileNeighborDict[_hexCoordinates];
 
+
+        // If the _hexCoordinates passes the above checks then -
+        // add the _hexCoordinates and create a new List<Vector3Int>
         hexTileNeighborDict.Add(_hexCoordinates, new List<Vector3Int>());
 
-        foreach (var direction in Direction.GetDirectionList(_hexCoordinates.z))
+        // Check each direction in the List<Vector3Int> returned from -
+        // the function GetDirectionList with the passed _hexCoordindates.z
+        foreach (Vector3Int direction in Direction.GetDirectionList(_hexCoordinates.z))
         {
+            // Check the dictionary that contains all the hextiles for the currently
+            // passed _hexTileCoordinates with the added offset of each direction 
+            // from the List<Vector3Int> returned from GetDirectionFromList.
             if(hexTileDict.ContainsKey(_hexCoordinates + direction))
             {
+                // If any hex coord + direction offset is found, populate the -
+                // neighbor dictionary by passing _hexCoordinates as the Key and -
+                // adding the hextile + direction offset to the list created above.
                 hexTileNeighborDict[_hexCoordinates].Add(_hexCoordinates + direction);
             }
         }
+
+        // You then return this with the newly created and populated list of -
+        // neighbors that was created above... WHEW!
         return hexTileNeighborDict[_hexCoordinates];
     }
 }
