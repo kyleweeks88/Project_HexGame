@@ -14,9 +14,13 @@ public class GlowHighlight : MonoBehaviour
 
     bool isGlowing = false;
 
+    Color validSpaceColor = Color.green;
+    Color originalGlowColor;
+
     private void Awake()
     {
         PrepareMaterialDictionaries();
+        originalGlowColor = glowMat.GetColor("_GlowColor");
     }
 
     public void ToggleGlow()
@@ -36,6 +40,32 @@ public class GlowHighlight : MonoBehaviour
             }
         }
         isGlowing = !isGlowing;
+    }
+
+    internal void ResetGlowHighlight()
+    {
+        if(isGlowing == false) { return; }
+
+        foreach (Renderer renderer in glowMaterialDict.Keys)
+        {
+            foreach (Material material in glowMaterialDict[renderer])
+            {
+                material.SetColor("_GlowColor", originalGlowColor);
+            }
+        }
+    }
+
+    internal void HighlightValidPath()
+    {
+        if (isGlowing == false) { return; }
+
+        foreach (Renderer renderer in glowMaterialDict.Keys)
+        {
+            foreach (Material material in glowMaterialDict[renderer])
+            {
+                material.SetColor("_GlowColor", validSpaceColor);
+            }
+        }
     }
 
     public void ToggleGlow(bool state)

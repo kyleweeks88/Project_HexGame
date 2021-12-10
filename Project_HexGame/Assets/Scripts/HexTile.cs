@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,16 @@ public class HexTile : MonoBehaviour
     public void EnableHighlight() => highlight.ToggleGlow(true);
 
     public void DisableHighlight() => highlight.ToggleGlow(false);
+
+    internal void ResetHighlight()
+    {
+        highlight.ResetGlowHighlight();
+    }
+
+    internal void HighlightPath()
+    {
+        highlight.HighlightValidPath();
+    }
 }
 
 public enum HexType

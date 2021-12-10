@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,6 +66,19 @@ public class HexGrid : MonoBehaviour
         // You then return this with the newly created and populated list of -
         // neighbors that was created above... WHEW!
         return hexTileNeighborDict[_hexCoordinates];
+    }
+
+    /// <summary>
+    /// Takes the world position of the passed Vector3 and converts it
+    /// to fit the offset coordinates of the Hex Grid. Then returns the 
+    /// closest Hex Tile position to the passed Vector3.
+    /// </summary>
+    /// <param name="_worldPos"></param>
+    /// <returns></returns>
+    public Vector3Int GetClosestHex(Vector3 _worldPos)
+    {
+        _worldPos.y = 0;
+        return HexCoordinates.ConvertPositionToOffset(_worldPos);
     }
 }
 

@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SelectionManager : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
 
     public LayerMask selectionMask;
-    public HexGrid hexGrid;
 
-    List<Vector3Int> neighbors = new List<Vector3Int>();
+    public UnityEvent<GameObject> OnUnitSelected;
+    public UnityEvent<GameObject> OnTerrainSelected;
 
     private void Awake()
     {
@@ -23,35 +24,48 @@ public class SelectionManager : MonoBehaviour
         GameObject result;
         if(FindTarget(mousePos, out result))
         {
-            HexTile selectedHexTile = result.GetComponent<HexTile>();
-
-            selectedHexTile.DisableHighlight();
-            foreach (Vector3Int neighbor in neighbors)
+            if(UnitSelected(result))
             {
-                hexGrid.GetTileAt(neighbor).DisableHighlight();
+                OnUnitSelected?.Invoke(result);
             }
-
-            // Create a new struct (which exists inside the GraphSearch class) and -
-            // populate it by calling the function BFSGetRange inside GraphSearch -
-            // passing in the active hexGrid, the hextile we've selected by mouse -
-            // and a hard-coded movement value of 20 points.
-            BFSResult bfsResult = GraphSearch.BFSGetRange(hexGrid, selectedHexTile.HexCoords, 20);
-
-            // This List<Vector3Int> neighbors will be populated by our bfsResult.
-            // I DONT UNDERSTAND HOW THE COROUTINE 'GetRangePositions' WORKS RIGHT NOW!
-            neighbors = new List<Vector3Int>(bfsResult.GetRangePositions());
-
-            foreach (Vector3Int neighbor in neighbors)
+            else
             {
-                hexGrid.GetTileAt(neighbor).EnableHighlight();
+                OnTerrainSelected?.Invoke(result);
             }
+            //HexTile selectedHexTile = result.GetComponent<HexTile>();
 
-            Debug.Log($"Neighbors for {selectedHexTile.HexCoords} are: ");
-            foreach (Vector3Int neighborPos in neighbors)
-            {
-                Debug.Log(neighborPos);
-            }
+            //selectedHexTile.DisableHighlight();
+            //foreach (Vector3Int neighbor in neighbors)
+            //{
+            //    hexGrid.GetTileAt(neighbor).DisableHighlight();
+            //}
+
+            //// Create a new struct (which exists inside the GraphSearch class) and -
+            //// populate it by calling the function BFSGetRange inside GraphSearch -
+            //// passing in the active hexGrid, the hextile we've selected by mouse -
+            //// and a hard-coded movement value of 20 points.
+            //BFSResult bfsResult = GraphSearch.BFSGetRange(hexGrid, selectedHexTile.HexCoords, 20);
+
+            //// This List<Vector3Int> neighbors will be populated by our bfsResult.
+            //// I DONT UNDERSTAND HOW THE COROUTINE 'GetRangePositions' WORKS RIGHT NOW!
+            //neighbors = new List<Vector3Int>(bfsResult.GetRangePositions());
+
+            //foreach (Vector3Int neighbor in neighbors)
+            //{
+            //    hexGrid.GetTileAt(neighbor).EnableHighlight();
+            //}
+
+            //Debug.Log($"Neighbors for {selectedHexTile.HexCoords} are: ");
+            //foreach (Vector3Int neighborPos in neighbors)
+            //{
+            //    Debug.Log(neighborPos);
+            //}
         }
+    }
+
+    bool UnitSelected(GameObject _result)
+    {
+        return _result.GetComponent<Unit>() != null;
     }
 
     private bool FindTarget(Vector3 mousePos, out GameObject result)
