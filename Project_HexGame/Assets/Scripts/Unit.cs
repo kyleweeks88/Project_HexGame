@@ -21,6 +21,10 @@ public class Unit : MonoBehaviour
     public event Action<Unit> OnMovementFinished;
 
     // !!!TESTING!!! //
+    [Header("!!!TESTING!!!")]
+    public List<Vector3Int> currentPath = new List<Vector3Int>();
+    public event Action<List<Vector3Int>, HexGrid> OnMovementStarted;
+    [SerializeField] HexGrid hexGrid;
     public bool isMoving = false;
 
     private void Awake()
@@ -30,7 +34,7 @@ public class Unit : MonoBehaviour
 
     public void Deselect()
     {
-        glowHighlight.ToggleGlow(false);
+        glowHighlight.ShouldToggleGlow(false);
     }
 
     public void Select()
@@ -48,6 +52,9 @@ public class Unit : MonoBehaviour
         pathPositions = new Queue<Vector3>(_currentPath);
         Vector3 firstTarget = pathPositions.Dequeue();
         StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
+
+        // !!!TESTING!!! //
+        OnMovementStarted?.Invoke(currentPath, hexGrid);
     }
 
     IEnumerator RotationCoroutine(Vector3 _endPos, float _rotDuration)

@@ -24,8 +24,12 @@ public class MovementSystem : MonoBehaviour
     {
         CalculateRange(_selectedUnit, _hexGrid);
 
+        Vector3Int unitPos = _hexGrid.GetClosestHex(_selectedUnit.transform.position);
+
         foreach (Vector3Int hexPos in movementRange.GetRangePositions())
         {
+            if (unitPos == hexPos)
+                continue;
             _hexGrid.GetTileAt(hexPos).EnableHighlight();
         }
     }
@@ -35,6 +39,11 @@ public class MovementSystem : MonoBehaviour
         movementRange = GraphSearch.BFSGetRange(_hexGrid,
             _hexGrid.GetClosestHex(_selectedUnit.transform.position),
             _selectedUnit.MovementPoints);
+
+        foreach (Vector3Int hexPos in movementRange.GetRangePositions())
+        {
+            _selectedUnit.currentPath.Add(hexPos);
+        }
     }
 
     public void ShowPath(Vector3Int _selectedHexPos, HexGrid _hexGrid)
@@ -45,7 +54,9 @@ public class MovementSystem : MonoBehaviour
             {
                 _hexGrid.GetTileAt(hexPos).ResetHighlight();
             }
+
             currentPath = movementRange.GetPathTo(_selectedHexPos);
+
             foreach (Vector3Int hexPos in currentPath)
             { 
                 _hexGrid.GetTileAt(hexPos).HighlightPath();

@@ -30,6 +30,7 @@ public class GlowHighlight : MonoBehaviour
     {
         if(isGlowing == false)
         {
+            ResetGlowHighlight();
             foreach (Renderer renderer in originalMaterialDict.Keys)
             {
                 renderer.materials = glowMaterialDict[renderer];
@@ -47,7 +48,7 @@ public class GlowHighlight : MonoBehaviour
 
     internal void ResetGlowHighlight()
     {
-        if(isGlowing == false) { return; }
+        //if(isGlowing == false) { return; }
 
         foreach (Renderer renderer in glowMaterialDict.Keys)
         {
@@ -73,7 +74,7 @@ public class GlowHighlight : MonoBehaviour
         }
     }
 
-    public void ToggleGlow(bool state)
+    public void ShouldToggleGlow(bool state)
     {
         if (isGlowing == state)
             return;

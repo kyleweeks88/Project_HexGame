@@ -11,14 +11,14 @@ public class UnitManager : MonoBehaviour
 
     [SerializeField] MovementSystem movementSystem;
 
-    public bool PlayersTurn { get; private set; } = true;
+    public bool CanMove { get; private set; } = true;
 
     [SerializeField] Unit selectedUnit;
     HexTile previouslySelectedHex;
 
     public void HandleUnitSelected(GameObject _unit)
     {
-        if (!PlayersTurn) { return; }
+        if (!CanMove) { return; }
 
         Unit unitRef = _unit.GetComponent<Unit>();
 
@@ -39,9 +39,9 @@ public class UnitManager : MonoBehaviour
 
     public void HandleTerrainSelected(GameObject _hexGO)
     {
-        if(selectedUnit == null || !PlayersTurn) { return; }
+        if(selectedUnit == null || !CanMove) { return; }
 
-        HexTile selectedHex = _hexGO.GetComponent<HexTile>();
+        HexTile selectedHex = _hexGO.GetComponentInParent<HexTile>();
 
         if(HandleHexOutOfRange(selectedHex.HexCoords) ||
             HandleSelectedHexIsUnitHex(selectedHex.HexCoords)) { return; }
@@ -69,15 +69,18 @@ public class UnitManager : MonoBehaviour
 
     private void HandleTargetHexSelected(HexTile _selectedHex)
     {
+        // If the Player is selecting a new HexTile to move to.
         if(previouslySelectedHex == null || previouslySelectedHex != _selectedHex)
         {
             previouslySelectedHex = _selectedHex;
             movementSystem.ShowPath(_selectedHex.HexCoords, this.hexGrid);
         }
+        // If the player has clicked a new HexTile and is clicking again
+        // to now move to that HexTile.
         else
         {
             movementSystem.MoveUnit(selectedUnit, this.hexGrid);
-            PlayersTurn = false;
+            CanMove = false;
             selectedUnit.OnMovementFinished += ResetTurn;
             ClearOldSelection();
         }
@@ -109,6 +112,6 @@ public class UnitManager : MonoBehaviour
     private void ResetTurn(Unit _selectedUnit)
     {
         _selectedUnit.OnMovementFinished -= ResetTurn;
-        PlayersTurn = true;
+        CanMove = true;
     }
 }

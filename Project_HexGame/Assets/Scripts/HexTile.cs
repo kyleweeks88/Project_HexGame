@@ -15,6 +15,9 @@ public class HexTile : MonoBehaviour
 
     private void Awake()
     {
+        //hexCoordinates = GetComponent<HexCoordinates>();
+        //highlight = GetComponent<GlowHighlight>();
+
         hexCoordinates = GetComponent<HexCoordinates>();
         highlight = GetComponent<GlowHighlight>();
     }
@@ -33,9 +36,9 @@ public class HexTile : MonoBehaviour
         return this.hexType == HexType.Obstacle;
     }
 
-    public void EnableHighlight() => highlight.ToggleGlow(true);
+    public void EnableHighlight() => highlight.ShouldToggleGlow(true);
 
-    public void DisableHighlight() => highlight.ToggleGlow(false);
+    public void DisableHighlight() => highlight.ShouldToggleGlow(false);
 
     internal void ResetHighlight()
     {
