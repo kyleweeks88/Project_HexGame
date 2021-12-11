@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [SelectionBase]
 public class Unit : MonoBehaviour
@@ -22,6 +23,8 @@ public class Unit : MonoBehaviour
 
     // !!!TESTING!!! //
     [Header("!!!TESTING!!!")]
+    Vector3 targetPos;
+    NavMeshAgent navAgent;
     public List<Vector3Int> currentPath = new List<Vector3Int>();
     public event Action<List<Vector3Int>, HexGrid> OnMovementStarted;
     [SerializeField] HexGrid hexGrid;
@@ -30,6 +33,29 @@ public class Unit : MonoBehaviour
     private void Awake()
     {
         glowHighlight = GetComponent<GlowHighlight>();
+        navAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        if (isMoving)
+        {
+            float dist = Vector3.Distance(navAgent.transform.position, targetPos);
+            if (dist <= navAgent.stoppingDistance)
+            {
+                if (pathPositions.Count > 0)
+                {
+                    MoveToNavMeshPosition(pathPositions.Dequeue());
+                }
+                else
+                {
+                    OnMovementFinished?.Invoke(this);
+                    Debug.Log("Movement finished!");
+                    pathPositions.Clear();
+                    isMoving = false;
+                }
+            }
+        }
     }
 
     public void Deselect()
@@ -51,10 +77,19 @@ public class Unit : MonoBehaviour
     {
         pathPositions = new Queue<Vector3>(_currentPath);
         Vector3 firstTarget = pathPositions.Dequeue();
-        StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
+        //StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
 
         // !!!TESTING!!! //
         OnMovementStarted?.Invoke(currentPath, hexGrid);
+        MoveToNavMeshPosition(firstTarget);
+    }
+
+    void MoveToNavMeshPosition(Vector3 _pos)
+    {
+        targetPos = _pos;
+        isMoving = true;
+        
+        navAgent.SetDestination(_pos);
     }
 
     IEnumerator RotationCoroutine(Vector3 _endPos, float _rotDuration)
