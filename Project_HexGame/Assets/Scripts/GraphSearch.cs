@@ -104,7 +104,13 @@ public struct BFSResult
 {
     public Dictionary<Vector3Int, Vector3Int?> visitedNodesDict;
 
-    // This will generate a path from the start pos to the destination
+    /// <summary>
+    /// This will generate a path from the start pos to the destination by
+    /// checking a list of tiles nodes that are in range of the starting node.
+    /// It returns a generated BFS of List<Vector3Int>.
+    /// </summary>
+    /// <param name="_dest"></param>
+    /// <returns></returns>
     public List<Vector3Int> GetPathTo(Vector3Int _dest)
     {
         // if the destination isn't in the checked nodes then it can't -

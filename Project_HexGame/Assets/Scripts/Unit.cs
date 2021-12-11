@@ -18,7 +18,14 @@ public class Unit : MonoBehaviour
     // This queue path will be populated by the BFS which will be passed to this class.
     Queue<Vector3> pathPositions = new Queue<Vector3>();
 
-    public event Action<Unit> MovementFinished;
+    public event Action<Unit> OnMovementFinished;
+
+    // !!!TESTING!!! //
+    [Header("!!!TESTING!!!")]
+    public List<Vector3Int> currentPath = new List<Vector3Int>();
+    public event Action<List<Vector3Int>, HexGrid> OnMovementStarted;
+    [SerializeField] HexGrid hexGrid;
+    public bool isMoving = false;
 
     private void Awake()
     {
@@ -27,7 +34,7 @@ public class Unit : MonoBehaviour
 
     public void Deselect()
     {
-        glowHighlight.ToggleGlow(false);
+        glowHighlight.ShouldToggleGlow(false);
     }
 
     public void Select()
@@ -35,13 +42,19 @@ public class Unit : MonoBehaviour
         glowHighlight.ToggleGlow();
     }
 
-    // Our BFS class will pass it's created path list to this class here.
-    // This function will then dequeue positions one by one, assigning targets.
+    /// <summary>
+    /// The MovementSystem class will pass it's created BFS currentPath list to this class here.
+    /// This function will then dequeue positions one by one, assigning target destinations.
+    /// </summary>
+    /// <param name="_currentPath"></param>
     public void MoveThroughPath(List<Vector3> _currentPath)
     {
         pathPositions = new Queue<Vector3>(_currentPath);
         Vector3 firstTarget = pathPositions.Dequeue();
         StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
+
+        // !!!TESTING!!! //
+        OnMovementStarted?.Invoke(currentPath, hexGrid);
     }
 
     IEnumerator RotationCoroutine(Vector3 _endPos, float _rotDuration)
@@ -85,6 +98,7 @@ public class Unit : MonoBehaviour
             timeElapsed += Time.deltaTime;
             float lerpStep = timeElapsed / movementDuration;
             transform.position = Vector3.Lerp(startPos, _endPos, lerpStep);
+            isMoving = true;
             yield return null;
         }
         transform.position = _endPos;
@@ -97,7 +111,8 @@ public class Unit : MonoBehaviour
         else
         {
             Debug.Log("Movement finished!");
-            MovementFinished?.Invoke(this);
+            isMoving = false;
+            OnMovementFinished?.Invoke(this);
         }
     }
 }
