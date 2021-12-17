@@ -15,7 +15,7 @@ public class MovementSystem : MonoBehaviour
     {
         foreach (Vector3Int hexPos in movementRange.GetRangePositions())
         {
-            _hexGrid.GetTileAt(hexPos).DisableHighlight();
+            _hexGrid.GetHexTileAt(hexPos).DisableHighlight();
         }
         movementRange = new BFSResult();
     }
@@ -24,20 +24,20 @@ public class MovementSystem : MonoBehaviour
     {
         CalculateRange(_selectedUnit, _hexGrid);
 
-        Vector3Int unitPos = _hexGrid.GetClosestHex(_selectedUnit.transform.position);
+        Vector3Int unitPos = _hexGrid.GetClosestHexCoords(_selectedUnit.transform.position);
 
         foreach (Vector3Int hexPos in movementRange.GetRangePositions())
         {
             if (unitPos == hexPos)
                 continue;
-            _hexGrid.GetTileAt(hexPos).EnableHighlight();
+            _hexGrid.GetHexTileAt(hexPos).EnableHighlight();
         }
     }
 
     public void CalculateRange(Unit _selectedUnit, HexGrid _hexGrid)
     {
-        movementRange = GraphSearch.BFSGetRange(_hexGrid,
-            _hexGrid.GetClosestHex(_selectedUnit.transform.position),
+        movementRange = GraphSearch.BFSGetRange(_selectedUnit, _hexGrid,
+            _hexGrid.GetClosestHexCoords(_selectedUnit.transform.position),
             _selectedUnit.MovementPoints);
     }
 
@@ -47,14 +47,14 @@ public class MovementSystem : MonoBehaviour
         {
             foreach (Vector3Int hexPos in currentPath) 
             {
-                _hexGrid.GetTileAt(hexPos).ResetHighlight();
+                _hexGrid.GetHexTileAt(hexPos).ResetHighlight();
             }
 
             currentPath = movementRange.GetPathTo(_selectedHexPos);
 
             foreach (Vector3Int hexPos in currentPath)
             { 
-                _hexGrid.GetTileAt(hexPos).HighlightPath();
+                _hexGrid.GetHexTileAt(hexPos).HighlightPath();
                 _selectedUnit.currentPath.Add(hexPos);
             }
         }
@@ -69,7 +69,7 @@ public class MovementSystem : MonoBehaviour
         // I DON'T UNDERSTAND HOW THIS FUNCTION WORKS.
         // (TUTORIAL: Hex Grid Movement P4 - Character Movement P1 - 18:00)
         _selectedUit.MoveThroughPath(currentPath.Select(
-            pos => _hexGrid.GetTileAt(pos).transform.position).ToList());
+            pos => _hexGrid.GetHexTileAt(pos).transform.position).ToList());
     }
 
     public bool IsHexInRange(Vector3Int _hexPos)

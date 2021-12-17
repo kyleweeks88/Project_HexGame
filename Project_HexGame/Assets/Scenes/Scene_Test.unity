@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3280415766319184655, guid: 8f86f5ecfe0f03f4ab6b91673375aec3, type: 3}
+      propertyPath: hexLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 8f86f5ecfe0f03f4ab6b91673375aec3, type: 3}
       propertyPath: m_Name
       value: HexTile_DifficultTerrain
@@ -406,9 +410,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1348685023}
     m_Modifications:
+    - target: {fileID: 3280415766319184655, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: hexLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_Name
       value: HexTile_DefaultTerrain (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115349774407243913, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8796148915347989227, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_RootOrder
@@ -471,9 +483,17 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3280415766319184655, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: hexLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_Name
       value: HexTile_DefaultTerrain (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115349774407243913, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8796148915347989227, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_RootOrder
@@ -546,13 +566,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1348685023}
     m_Modifications:
+    - target: {fileID: 3280415766319184655, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: hexLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_Name
       value: HexTile_DefaultTerrain (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8115349774407243913, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8796148915347989227, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_RootOrder
@@ -1431,6 +1455,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3280415766319184655, guid: 1e79ee0179a805c4284baed7a2c04412, type: 3}
+      propertyPath: hexLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 1e79ee0179a805c4284baed7a2c04412, type: 3}
       propertyPath: m_Name
       value: HexTile_PathTerrain
@@ -1496,6 +1524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1348685023}
     m_Modifications:
+    - target: {fileID: 3280415766319184655, guid: 1e79ee0179a805c4284baed7a2c04412, type: 3}
+      propertyPath: hexLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 1e79ee0179a805c4284baed7a2c04412, type: 3}
       propertyPath: m_Name
       value: HexTile_PathTerrain (1)
@@ -1823,6 +1855,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1348685023}
     m_Modifications:
+    - target: {fileID: 3280415766319184655, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: hexLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_Name
       value: HexTile_DefaultTerrain (9)
@@ -1841,7 +1877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796148915347989227, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8796148915347989227, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1899,6 +1935,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1348685023}
     m_Modifications:
+    - target: {fileID: 3280415766319184655, guid: 1e79ee0179a805c4284baed7a2c04412, type: 3}
+      propertyPath: hexLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 1e79ee0179a805c4284baed7a2c04412, type: 3}
       propertyPath: m_Name
       value: HexTile_PathTerrain (2)
@@ -2300,9 +2340,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1348685023}
     m_Modifications:
+    - target: {fileID: 3280415766319184655, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: hexLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4215151315739515998, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_Name
       value: HexTile_DefaultTerrain (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115349774407243913, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8796148915347989227, guid: 202f6b3ae56df154c82545447e806e73, type: 3}
       propertyPath: m_RootOrder

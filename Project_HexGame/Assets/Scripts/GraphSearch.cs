@@ -14,7 +14,7 @@ public class GraphSearch
     /// <param name="_startPoint"></param>
     /// <param name="_movementPoints"></param>
     /// <returns></returns>
-    public static BFSResult BFSGetRange(HexGrid _hexGrid, Vector3Int _startPoint, int _movementPoints)
+    public static BFSResult BFSGetRange(Unit _selectedUnit, HexGrid _hexGrid, Vector3Int _startPoint, int _movementPoints)
     {
         // THIS DICTIONARY NAMING IS A BIT CONFUSING. THE UNIT DOESNT ACTUALLY
         // VISIT THE NODES WERE CHECKING HERE. THIS IS SOMETHING MORE LIKE -
@@ -34,10 +34,14 @@ public class GraphSearch
             Vector3Int currentNode = nodesToVisitQueue.Dequeue();
             foreach (Vector3Int neighborPos in _hexGrid.GetNeighborsFor(currentNode))
             {
-                if (_hexGrid.GetTileAt(neighborPos).IsObstacle()) continue;
+                if (_hexGrid.GetHexTileAt(neighborPos).IsObstacle()) continue;
 
+                // !!!TESTING!!!
+                Vector3Int coord = _hexGrid.GetClosestHexCoords(_selectedUnit.transform.position);
+                HexTile hex = _hexGrid.GetHexTileAt(coord);
+                int nodeCost = _hexGrid.GetHexTileAt(neighborPos).GetCost2(hex);
 
-                int nodeCost = _hexGrid.GetTileAt(neighborPos).GetCost();
+                //int nodeCost = _hexGrid.GetHexTileAt(neighborPos).GetCost();
                 // Pass in the currentNode as a key to get the int value cost.
                 int currentCost = costSoFar[currentNode]; // this will return zero for the first currently occupied tile.
                 // Add the two int values to get the total of how much it -

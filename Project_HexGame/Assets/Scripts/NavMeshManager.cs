@@ -25,7 +25,7 @@ public class NavMeshManager : MonoBehaviour
         foreach (Vector3Int hexPos in _currentPath)
         {
             //Change the layer name to be bakeable
-            _hexGrid.GetTileAt(hexPos).gameObject.GetComponentInChildren<MeshCollider>().gameObject.layer = LayerMask.NameToLayer("HexTile_Bakeable");
+            _hexGrid.GetHexTileAt(hexPos).gameObject.GetComponentInChildren<MeshCollider>().gameObject.layer = LayerMask.NameToLayer("HexTile_Bakeable");
             // build navmesh
             BakeMesh(null);
         }
@@ -40,7 +40,7 @@ public class NavMeshManager : MonoBehaviour
     {
         foreach (Vector3Int hexpos in unit.currentPath)
         {
-            hexGrid.GetTileAt(hexpos).gameObject.GetComponentInChildren<MeshCollider>().gameObject.layer = LayerMask.NameToLayer("HexTile");
+            hexGrid.GetHexTileAt(hexpos).gameObject.GetComponentInChildren<MeshCollider>().gameObject.layer = LayerMask.NameToLayer("HexTile");
         }
 
         _unit.currentPath.Clear();

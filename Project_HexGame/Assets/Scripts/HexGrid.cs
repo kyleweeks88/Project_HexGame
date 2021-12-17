@@ -16,7 +16,7 @@ public class HexGrid : MonoBehaviour
         }
     }
 
-    public HexTile GetTileAt(Vector3Int hexCoordinates)
+    public HexTile GetHexTileAt(Vector3Int hexCoordinates)
     {
         HexTile result = null;
         hexTileDict.TryGetValue(hexCoordinates, out result);
@@ -75,7 +75,7 @@ public class HexGrid : MonoBehaviour
     /// </summary>
     /// <param name="_worldPos"></param>
     /// <returns></returns>
-    public Vector3Int GetClosestHex(Vector3 _worldPos)
+    public Vector3Int GetClosestHexCoords(Vector3 _worldPos)
     {
         _worldPos.y = 0;
         return HexCoordinates.ConvertPositionToOffset(_worldPos);
