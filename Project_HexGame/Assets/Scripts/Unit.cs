@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [SelectionBase]
 public class Unit : MonoBehaviour
@@ -26,10 +27,35 @@ public class Unit : MonoBehaviour
     public event Action<List<Vector3Int>, HexGrid> OnMovementStarted;
     [SerializeField] HexGrid hexGrid;
     public bool isMoving = false;
+    NavMeshAgent navAgent;
+    Vector3 targetDest;
 
     private void Awake()
     {
         glowHighlight = GetComponent<GlowHighlight>();
+        navAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        if (isMoving)
+        {
+            float distanceToDest = Vector3.Distance(transform.position, targetDest);
+            if (distanceToDest <= navAgent.stoppingDistance)
+            {
+                if (pathPositions.Count > 0)
+                {
+                    targetDest = pathPositions.Dequeue();
+                    navAgent.SetDestination(targetDest);
+                }
+                else
+                {
+                    transform.position = targetDest;
+                    OnMovementFinished?.Invoke(this);
+                    isMoving = false;
+                }
+            }
+        }
     }
 
     public void Deselect()
@@ -40,6 +66,7 @@ public class Unit : MonoBehaviour
     public void Select()
     {
         glowHighlight.ToggleGlow();
+        Debug.Log(hexGrid.GetClosestHex(transform.position));
     }
 
     /// <summary>
@@ -51,10 +78,13 @@ public class Unit : MonoBehaviour
     {
         pathPositions = new Queue<Vector3>(_currentPath);
         Vector3 firstTarget = pathPositions.Dequeue();
-        StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
+        //StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
 
         // !!!TESTING!!! //
+        targetDest = firstTarget;
         OnMovementStarted?.Invoke(currentPath, hexGrid);
+        navAgent.SetDestination(firstTarget);
+        isMoving = true;
     }
 
     IEnumerator RotationCoroutine(Vector3 _endPos, float _rotDuration)
@@ -69,10 +99,10 @@ public class Unit : MonoBehaviour
         // Abs gets us the absolute value of startRot and endRot to compare in the Dot Product .
         // The Dot product returns 1 if the unit is facing the desired direction -
         // otherwise it will return a value between 0 and 0.9 so we rotate.
-        if(Mathf.Approximately(Mathf.Abs(Quaternion.Dot(startRot, endRot)), 1.0f) == false)
+        if (Mathf.Approximately(Mathf.Abs(Quaternion.Dot(startRot, endRot)), 1.0f) == false)
         {
             float timeElapsed = 0f;
-            while(timeElapsed < _rotDuration)
+            while (timeElapsed < _rotDuration)
             {
                 timeElapsed += Time.deltaTime;
                 float lerpStep = timeElapsed / _rotDuration;
@@ -93,7 +123,7 @@ public class Unit : MonoBehaviour
         _endPos.y = startPos.y;
         float timeElapsed = 0f;
 
-        while(timeElapsed < movementDuration)
+        while (timeElapsed < movementDuration)
         {
             timeElapsed += Time.deltaTime;
             float lerpStep = timeElapsed / movementDuration;
@@ -103,7 +133,7 @@ public class Unit : MonoBehaviour
         }
         transform.position = _endPos;
 
-        if(pathPositions.Count > 0)
+        if (pathPositions.Count > 0)
         {
             Debug.Log("Selecting the next position!");
             StartCoroutine(RotationCoroutine(pathPositions.Dequeue(), rotationDuration));

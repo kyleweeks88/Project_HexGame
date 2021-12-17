@@ -11,20 +11,19 @@ public class NavMeshManager : MonoBehaviour
 
     // !!!TESTING!!! //
     [SerializeField] Unit unit;
+    [SerializeField] HexGrid hexGrid;
 
     private void Awake()
     {
         navSurface = GetComponent<NavMeshSurface>();
         unit.OnMovementStarted += PrepareTilesForNavMesh;
-        unit.OnMovementFinished += ClearMesh;
+        //unit.OnMovementFinished += ClearMesh;
     }
 
     void PrepareTilesForNavMesh(List<Vector3Int> _currentPath, HexGrid _hexGrid)
     {
         foreach (Vector3Int hexPos in _currentPath)
         {
-            // Get the original layer name
-
             //Change the layer name to be bakeable
             _hexGrid.GetTileAt(hexPos).gameObject.GetComponentInChildren<MeshCollider>().gameObject.layer = LayerMask.NameToLayer("HexTile_Bakeable");
             // build navmesh
@@ -39,6 +38,12 @@ public class NavMeshManager : MonoBehaviour
 
     void ClearMesh(Unit _unit)
     {
+        foreach (Vector3Int hexpos in unit.currentPath)
+        {
+            hexGrid.GetTileAt(hexpos).gameObject.GetComponentInChildren<MeshCollider>().gameObject.layer = LayerMask.NameToLayer("HexTile");
+        }
+
+        _unit.currentPath.Clear();
         navSurface.RemoveData();
     }
 }

@@ -39,14 +39,9 @@ public class MovementSystem : MonoBehaviour
         movementRange = GraphSearch.BFSGetRange(_hexGrid,
             _hexGrid.GetClosestHex(_selectedUnit.transform.position),
             _selectedUnit.MovementPoints);
-
-        foreach (Vector3Int hexPos in movementRange.GetRangePositions())
-        {
-            _selectedUnit.currentPath.Add(hexPos);
-        }
     }
 
-    public void ShowPath(Vector3Int _selectedHexPos, HexGrid _hexGrid)
+    public void ShowPath(Unit _selectedUnit, Vector3Int _selectedHexPos, HexGrid _hexGrid)
     {
         if(movementRange.GetRangePositions().Contains(_selectedHexPos))
         {
@@ -60,13 +55,14 @@ public class MovementSystem : MonoBehaviour
             foreach (Vector3Int hexPos in currentPath)
             { 
                 _hexGrid.GetTileAt(hexPos).HighlightPath();
+                _selectedUnit.currentPath.Add(hexPos);
             }
         }
     }
 
     public void MoveUnit(Unit _selectedUit, HexGrid _hexGrid)
     {
-        Debug.Log($"Moving unit {_selectedUit.name}.");
+        //Debug.Log($"Moving unit {_selectedUit.name}.");
 
         // Here we want to select the default positions of the Unit's transforms -
         // and NOT the hex coordinates from the HexGrid.

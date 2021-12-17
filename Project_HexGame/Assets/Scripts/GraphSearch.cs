@@ -96,7 +96,8 @@ public class GraphSearch
         // that the unit is already occupying.
         // Once all this is done, return this reversed path list of Vector3Ints -
         // and skip the first index.
-        return path.Skip(1).ToList();
+        //return path.Skip(1).ToList();
+        return path.ToList();
     }
 }
 

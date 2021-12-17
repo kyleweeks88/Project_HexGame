@@ -51,6 +51,7 @@ public class UnitManager : MonoBehaviour
 
     private void PrepareUnitForMovement(Unit _unitRef)
     {
+        Debug.Log("TEST");
         if (this.selectedUnit != null)
             ClearOldSelection();
 
@@ -73,7 +74,7 @@ public class UnitManager : MonoBehaviour
         if(previouslySelectedHex == null || previouslySelectedHex != _selectedHex)
         {
             previouslySelectedHex = _selectedHex;
-            movementSystem.ShowPath(_selectedHex.HexCoords, this.hexGrid);
+            movementSystem.ShowPath(selectedUnit, _selectedHex.HexCoords, this.hexGrid);
         }
         // If the player has clicked a new HexTile and is clicking again
         // to now move to that HexTile.
