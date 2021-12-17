@@ -17,7 +17,7 @@ public class NavMeshManager : MonoBehaviour
     {
         navSurface = GetComponent<NavMeshSurface>();
         unit.OnMovementStarted += PrepareTilesForNavMesh;
-        //unit.OnMovementFinished += ClearMesh;
+        unit.OnMovementFinished += ClearMesh;
     }
 
     void PrepareTilesForNavMesh(List<Vector3Int> _currentPath, HexGrid _hexGrid)

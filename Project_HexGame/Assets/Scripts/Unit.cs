@@ -40,18 +40,23 @@ public class Unit : MonoBehaviour
     {
         if (isMoving)
         {
-            float distanceToDest = Vector3.Distance(transform.position, targetDest);
+            //float distanceToDest = Vector3.Distance(transform.position, targetDest);
+            float distanceToDest = Vector3.Distance(transform.position, new Vector3(targetDest.x, transform.position.y, targetDest.z));
             if (distanceToDest <= navAgent.stoppingDistance)
             {
                 if (pathPositions.Count > 0)
                 {
+                    transform.position = targetDest;
                     targetDest = pathPositions.Dequeue();
-                    navAgent.SetDestination(targetDest);
+                    NavMeshMovement(targetDest);
+                    return;
                 }
                 else
                 {
-                    transform.position = targetDest;
                     OnMovementFinished?.Invoke(this);
+                    navAgent.enabled = false;
+                    //transform.position = targetDest;
+                    transform.position = new Vector3(targetDest.x, transform.position.y, targetDest.z);
                     isMoving = false;
                 }
             }
@@ -66,7 +71,6 @@ public class Unit : MonoBehaviour
     public void Select()
     {
         glowHighlight.ToggleGlow();
-        Debug.Log(hexGrid.GetClosestHex(transform.position));
     }
 
     /// <summary>
@@ -81,10 +85,16 @@ public class Unit : MonoBehaviour
         //StartCoroutine(RotationCoroutine(firstTarget, rotationDuration));
 
         // !!!TESTING!!! //
+        isMoving = true;
         targetDest = firstTarget;
         OnMovementStarted?.Invoke(currentPath, hexGrid);
-        navAgent.SetDestination(firstTarget);
-        isMoving = true;
+        NavMeshMovement(targetDest);
+    }
+
+    void NavMeshMovement(Vector3 _endPos)
+    {
+        navAgent.enabled = true;
+        navAgent.SetDestination(_endPos);
     }
 
     IEnumerator RotationCoroutine(Vector3 _endPos, float _rotDuration)

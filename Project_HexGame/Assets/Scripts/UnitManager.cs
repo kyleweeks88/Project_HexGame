@@ -51,7 +51,6 @@ public class UnitManager : MonoBehaviour
 
     private void PrepareUnitForMovement(Unit _unitRef)
     {
-        Debug.Log("TEST");
         if (this.selectedUnit != null)
             ClearOldSelection();
 

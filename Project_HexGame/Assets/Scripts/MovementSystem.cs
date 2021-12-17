@@ -62,7 +62,7 @@ public class MovementSystem : MonoBehaviour
 
     public void MoveUnit(Unit _selectedUit, HexGrid _hexGrid)
     {
-        //Debug.Log($"Moving unit {_selectedUit.name}.");
+        Debug.Log($"Moving unit {_selectedUit.name}.");
 
         // Here we want to select the default positions of the Unit's transforms -
         // and NOT the hex coordinates from the HexGrid.
