@@ -16,7 +16,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] Unit selectedUnit;
     HexTile previouslySelectedHex;
 
-    // !!!TESTING!!! //
+    // !!!TESTING!!!
     public bool isPlayerOne;
 
     private void OnEnable()
@@ -126,20 +126,25 @@ public class UnitManager : MonoBehaviour
     {
         _selectedUnit.OnMovementFinished -= ResetTurn;
         //CanMove = true;
+
+        // !!!TESTING!!! //
+        // THIS WILL PROBABLY BE CALLED BY A GUI BUTTON PRESS FROM THE PLAYER
+        // THAT DETERMINES WHEN DONE WITH MOVE PHASE.
+        //HandleMovePhase();
     }
 
     void HandleMovePhase(TurnPhase _movePhase)
     {
         if(isPlayerOne && GameManager.Instance.gameState == GameState.Turn_P1)
         {
-            if(GameManager.Instance.turnPhase == _movePhase)
+            if(GameManager.Instance.turnPhase == TurnPhase.Movement)
             {
                 CanMove = true;
             }
         }
         else if(!isPlayerOne && GameManager.Instance.gameState == GameState.Turn_P2)
         {
-            if (GameManager.Instance.turnPhase == _movePhase)
+            if (GameManager.Instance.turnPhase == TurnPhase.Movement)
             {
                 CanMove = true;
             }

@@ -17,21 +17,21 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        gameState = GameState.Turn_P1;
+        turnPhase = TurnPhase.Movement;
+    }
+
     public void UpdateGameState(GameState _newState)
     {
         gameState = _newState;
 
         switch (_newState)
         {
-            case GameState.UnitPlacement:
-                break;
             case GameState.Turn_P1:
                 break;
             case GameState.Turn_P2:
-                break;
-            case GameState.Victory:
-                break;
-            case GameState.Deafeat:
                 break;
         }
 
@@ -50,15 +50,36 @@ public class GameManager : MonoBehaviour
 
         OnTurnPhaseChanged?.Invoke(_newPhase);
     }
+
+    public void UpdateGame()
+    {
+        if(turnPhase == TurnPhase.Movement)
+        {
+            turnPhase = TurnPhase.Combat;
+        }
+        else if(turnPhase == TurnPhase.Combat)
+        {
+            turnPhase = TurnPhase.Movement;
+            switch(gameState)
+            {
+                case GameState.Turn_P1:
+                    gameState = GameState.Turn_P2;
+                    break;
+                case GameState.Turn_P2:
+                    gameState = GameState.Turn_P1;
+                    break;
+            }
+        }
+    }
 }
 
 public enum GameState
 {
-    UnitPlacement,
+    //UnitPlacement,
     Turn_P1,
-    Turn_P2,
-    Victory,
-    Deafeat
+    Turn_P2
+    //Victory,
+    //Deafeat
 }
 
 public enum TurnPhase
