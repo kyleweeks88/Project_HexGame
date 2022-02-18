@@ -130,13 +130,14 @@ public class UnitManager : MonoBehaviour
         // !!!TESTING!!! //
         // THIS WILL PROBABLY BE CALLED BY A GUI BUTTON PRESS FROM THE PLAYER
         // THAT DETERMINES WHEN DONE WITH MOVE PHASE.
-        //HandleMovePhase();
+        HandleMovePhase();
     }
 
-    void HandleMovePhase(TurnPhase _movePhase)
+    void HandleMovePhase()
     {
         if(isPlayerOne && GameManager.Instance.gameState == GameState.Turn_P1)
         {
+            Debug.Log("TEST");
             if(GameManager.Instance.turnPhase == TurnPhase.Movement)
             {
                 CanMove = true;

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public TurnPhase turnPhase;
 
     public static event Action<GameState> OnGameStateChanged;
-    public static event Action<TurnPhase> OnTurnPhaseChanged;
+    public static event Action OnTurnPhaseChanged;
 
     private void Awake()
     {
@@ -48,28 +48,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        OnTurnPhaseChanged?.Invoke(_newPhase);
-    }
-
-    public void UpdateGame()
-    {
-        if(turnPhase == TurnPhase.Movement)
-        {
-            turnPhase = TurnPhase.Combat;
-        }
-        else if(turnPhase == TurnPhase.Combat)
-        {
-            turnPhase = TurnPhase.Movement;
-            switch(gameState)
-            {
-                case GameState.Turn_P1:
-                    gameState = GameState.Turn_P2;
-                    break;
-                case GameState.Turn_P2:
-                    gameState = GameState.Turn_P1;
-                    break;
-            }
-        }
+        OnTurnPhaseChanged?.Invoke();
     }
 }
 
