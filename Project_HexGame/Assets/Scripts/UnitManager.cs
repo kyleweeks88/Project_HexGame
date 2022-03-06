@@ -21,12 +21,12 @@ public class UnitManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnTurnPhaseChanged += HandleMovePhase;
+        GameManager.OnTurnPhaseChanged += HandlePhaseChange;
     }
 
     private void OnDisable()
     {
-        GameManager.OnTurnPhaseChanged -= HandleMovePhase;
+        GameManager.OnTurnPhaseChanged -= HandlePhaseChange;
     }
 
     public void HandleUnitSelected(GameObject _unit)
@@ -133,11 +133,23 @@ public class UnitManager : MonoBehaviour
         HandleMovePhase();
     }
 
+    void HandlePhaseChange()
+    {
+        switch(GameManager.Instance.turnPhase)
+        {
+            case TurnPhase.Movement:
+                HandleMovePhase();
+                break;
+            case TurnPhase.Combat:
+                CanMove = false;
+                break;
+        }
+    }
+
     void HandleMovePhase()
     {
         if(isPlayerOne && GameManager.Instance.gameState == GameState.Turn_P1)
         {
-            Debug.Log("TEST");
             if(GameManager.Instance.turnPhase == TurnPhase.Movement)
             {
                 CanMove = true;

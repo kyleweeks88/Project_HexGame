@@ -43,11 +43,16 @@ public class GameManager : MonoBehaviour
         switch (_newPhase)
         {
             case TurnPhase.Movement:
+                // Handle movement phase gamestate stuff 
+                print("Move Phase Started");
                 break;
             case TurnPhase.Combat:
+                // Handle combat phase gamestate stuff
+                print("Combat Phase Started");
                 break;
         }
 
+        turnPhase = _newPhase;
         OnTurnPhaseChanged?.Invoke();
     }
 }
